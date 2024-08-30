@@ -365,3 +365,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /build
 /vcpkg_installed/x64-windows
+.vscode/settings.json
