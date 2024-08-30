@@ -151,7 +151,7 @@ RBXClient::RBXClient(DWORD processID) :
 
     Instance DataModel(dataModelAddress, handle);
 
-    Instance LocalPlayer(read_memory<std::uintptr_t>(DataModel.FindFirstChildAddress("Players") + offsets::LocalPlayer, handle), handle);
+    Instance LocalPlayer(read_memory<std::uintptr_t>(DataModel.FindFirstChildOfClassAddress("Players") + offsets::LocalPlayer, handle), handle);
     Username = LocalPlayer.Name();
 
     // Need to add checks else the process will crash
