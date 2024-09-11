@@ -31,7 +31,8 @@ local coreModules, blacklistedModuleParents = {}, {
 	"PublishAssetPrompt",
 	"TopBar",
 	"InspectAndBuy",
-	"VoiceChat"
+	"VoiceChat",
+	"LinkingService"
 }
 
 for _, descendant in CoreGui.RobloxGui.Modules:GetDescendants() do
