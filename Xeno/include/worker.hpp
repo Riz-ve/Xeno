@@ -19,9 +19,9 @@
 namespace offsets {
     // Instance
     constexpr std::uintptr_t This = 0x8;
-    constexpr std::uintptr_t Name = 0x50;
-    constexpr std::uintptr_t Children = 0x58;
-    constexpr std::uintptr_t Parent = 0x68;
+    constexpr std::uintptr_t Name = 0x48;
+    constexpr std::uintptr_t Children = 0x50;
+    constexpr std::uintptr_t Parent = 0x60;
 
     constexpr std::uintptr_t ClassDescriptor = 0x18;
     constexpr std::uintptr_t ClassName = 0x8;
@@ -36,7 +36,7 @@ namespace offsets {
     constexpr std::uintptr_t BytecodeSize = 0x20;
 
     // Other
-    constexpr std::uintptr_t LocalPlayer = 0x108;
+    constexpr std::uintptr_t LocalPlayer = 0x100;
     constexpr std::uintptr_t ObjectValue = 0xc8;
 }
 
@@ -162,7 +162,7 @@ public:
                 Sleep(850);
                 write_memory<std::uintptr_t>(embeddedPtr + offsets::Bytecode, originalBytecodePtr, handle);
                 write_memory<std::uint64_t>(embeddedPtr + offsets::BytecodeSize, originalSize, handle);
-            }).detach();
+                }).detach();
         }
 
         LPVOID allocatedAddress = VirtualAllocEx(handle, nullptr, compressedBytecode.size(), MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
@@ -315,7 +315,7 @@ class bytecode_encoder_t : public Luau::BytecodeEncoder {
 std::vector<DWORD> GetProcessIDsByName(const std::wstring_view processName);
 std::uintptr_t GetRV(HANDLE handle);
 
-std::string compilable(const std::string& source, bool returnBytecode=false);
+std::string compilable(const std::string& source, bool returnBytecode = false);
 std::string Compile(const std::string& source);
 std::string decompress(const std::string_view compressed);
 
