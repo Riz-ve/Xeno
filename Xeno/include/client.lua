@@ -2033,6 +2033,7 @@ function Xeno.hookfunction(func, rep)
 			env[i] = rep
 		end
 	end
+	return func
 end
 Xeno.replaceclosure = Xeno.hookfunction
 
