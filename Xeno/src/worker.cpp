@@ -460,7 +460,7 @@ std::vector<DWORD> GetProcessIDsByName(const std::wstring_view processName) {
 
 std::uintptr_t GetRV(HANDLE handle)
 {
-    std::filesystem::path localAppData = std::filesystem::temp_directory_path().parent_path().parent_path();
+    std::filesystem::path localAppData = std::filesystem::path([] { char* buffer; size_t size; _dupenv_s(&buffer, &size, "LOCALAPPDATA"); return buffer ? buffer : ""; }());
     std::filesystem::path logs = localAppData / "Roblox" / "logs";
 
     if (!std::filesystem::is_directory(logs)) {
